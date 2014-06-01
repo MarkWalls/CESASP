@@ -20,6 +20,11 @@ namespace CES.ASP.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase ButtonUpload)
+        {
+           return View();
+        }
        
     }
 }
