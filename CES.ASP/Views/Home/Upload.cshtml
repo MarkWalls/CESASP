@@ -1,7 +1,9 @@
-﻿
+﻿@using System.Web;
+@model HttpPostedFileBase
 @{
     ViewBag.Title = "Upload";
 }
 
 <h2>Upload complete</h2>
-
+<h3>@Model.FileName</h3>
+<li>@Model.ContentType</li>

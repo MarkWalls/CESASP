@@ -21,9 +21,9 @@ namespace CES.ASP.Controllers
         }
 
         [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase ButtonUpload)
+        public ActionResult Upload(HttpPostedFileBase CESFileUpload)
         {
-           return View();
+           return View(CESFileUpload);
         }
        
     }
