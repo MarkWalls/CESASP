@@ -7,7 +7,22 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        
+    <div class="col-md-8">
+    @using (Html.BeginForm("Upload", "HomeController", FormMethod.Post, new { EncType="multipart/form-data"}))
+        {
+            <table>
+                <tr>
+                    <td>Upload Excel File: </td>
+                    <td><input type="text" name="CESFileName" /></td>
+                    <td><input type="file" id="ButtonUpload" name="CESFileUpload" /></td>
+
+                </tr>                
+                <tr>
+                    <td></td>
+                    <td align="right"><input type="submit" value="Process" /></td>
+                    <td></td>
+                </tr>
+            </table>
+        }
     </div>    
 </div>
