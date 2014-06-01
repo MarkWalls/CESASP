@@ -17,7 +17,8 @@ namespace CES.ASP.Models
         public float grand_total_percentage { get; set; }
         public string weight_unit { get; set; }
 
-        public virtual HashSet<Collection_Bin> MyProperty { get; set; }
+        public virtual HashSet<Collection_Bin> CollecitonBins { get; set; }
+        public Location Location { get; set; }
     }
 
     public class Collection_Bin
