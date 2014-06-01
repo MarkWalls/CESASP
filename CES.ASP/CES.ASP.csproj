@@ -232,6 +232,7 @@
     <Content Include="Views\Samples\Index.cshtml" />
     <Content Include="Views\Samples\Details.cshtml" />
     <Content Include="Views\Samples\Create.cshtml" />
+    <Content Include="Views\Samples\JSON.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

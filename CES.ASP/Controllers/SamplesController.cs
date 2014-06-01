@@ -5,6 +5,8 @@ using System.Web.Mvc;
 using CES.ASP.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
+using Newtonsoft.Json;
 
 namespace CES.ASP.Controllers
 {
@@ -57,13 +59,31 @@ namespace CES.ASP.Controllers
             return View();
         }
 
-        // GET: Samples/Create
-        public ActionResult Create()
+        //Return a JSON version of the object
+        public ActionResult JSON(string Id)
         {
+           var Samples = db.GetCollection<Sample>("Samples");
+           var query = Query<Sample>.EQ(e => e.Id, new ObjectId(Id));
+            Sample MySample = Samples.Find(query).First();
+            ViewBag.JSON = JsonConvert.SerializeObject(MySample);
+            return View();
+        }
+
+        
+        // GET: Samples/Create
+        // In the actual app this would be a HttpPost action, but just testing here.
+        public ActionResult Create(string JSON)
+        {
+            Sample NewSample = null;
+            //To make this accept JSON it would just be
+            if (JSON != null)
+            {
+                NewSample = JsonConvert.DeserializeObject<Sample>(JSON);
+            }
 
             //Just create a sample object for now to add
                 //I am getting a bit sleepy :)
-                Sample NewSample = new Sample{
+                NewSample = new Sample{
                      sqft = 123,
                      grand_total_weight = 5246,
                      grand_total_percentage = 12.0f,
@@ -72,7 +92,7 @@ namespace CES.ASP.Controllers
 
                AddSample(NewSample);
 
-            return View();
+            return RedirectToAction("Index");
         }
 
         private ObjectId AddSample(Sample NewSample)
